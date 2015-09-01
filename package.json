@@ -1,0 +1,29 @@
+{
+  "name": "tessellatetest",
+  "version": "1.0.0",
+  "description": "testing get-pixels on barebones node server.",
+  "main": "n/a",
+  "scripts": {
+    "test": "n/a"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n/a.git"
+  },
+  "keywords": [
+    "n/a"
+  ],
+  "author": "mack",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/n/a/issues"
+  },
+  "homepage": "https://github.com/n/a#readme",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "get-pixels": "^3.2.2",
+    "node": "0.0.0",
+    "png-js": "^0.1.1"
+  }
+}
