@@ -20,6 +20,8 @@ var pixelGetter = function(req, res){
       console.log(_storage + "is our storage object");
       var Map = new db.Map({
         data: _storage,
+        height: height,
+        width: width
       })
     });
   });
