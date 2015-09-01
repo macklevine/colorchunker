@@ -9,20 +9,14 @@ var chunkSize = 1; //10
 
 
 var pixelGetter = function(req, res){
-  getPixels('redsquare.jpg', function(err, pixels){
+  getPixels('fivebyfive.png', function(err, pixels){
     if (err){
       console.log(err);
       return;
     } 
-    // console.log(pixels.data.length);
-    //pixel data arrives in rgba.
-      // for (var i = 0; i < pixels.data.length; i+=4){
-      //   console.log(pixels.data[i]);
-      // }
     chunker(pixels.data, function(_storage){
       console.log(_storage + "is our storage object");
       res.send(_storage);
-      //save shit to the database here when done.
     });
   });
 };
@@ -33,10 +27,10 @@ var chunker = function(data, callback){
   //image height, image width, and pixel size will be changed according to what we pick for our final spec.
   for (var i = 0; i < height; i+=chunkSize){ //chunkSize: 2
     for (var j = 0; j < width; j+=chunkSize){ //chunkSize: 2
-      chunk = chunkMaker(i, j, data);
+      chunk = chunkMaker(j, i, data);
       _storage[index++] = {
-        rgb: getAverageColor(chunk),
-        coords: [j, i],
+        coords: [j, i], 
+        rgb: returnRGB(chunk),
         original: true
       }
     }
@@ -56,6 +50,14 @@ var chunkMaker = function(xCoord, yCoord, data){
   }
   return chunk;
 };
+
+var returnRGB = function(data){
+  return {
+    r: data[0],
+    g: data[1],
+    b: data[2]
+  }
+}
 
 var getAverageColor = function(data) {
   var r = 0;
