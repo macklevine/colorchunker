@@ -7,6 +7,7 @@ var height = 5; //250
 var width = 5;  //850
 var chunkSize = 1; //10
 
+//the first argument for getPixels should also be a file path.
 
 var pixelGetter = function(req, res){
   getPixels('fivebyfive.png', function(err, pixels){
@@ -27,7 +28,7 @@ var chunker = function(data, callback){
   //image height, image width, and pixel size will be changed according to what we pick for our final spec.
   for (var i = 0; i < height; i+=chunkSize){ //chunkSize: 2
     for (var j = 0; j < width; j+=chunkSize){ //chunkSize: 2
-      chunk = chunkMaker(j, i, data);
+      var chunk = chunkMaker(j, i, data);
       _storage[index++] = {
         coords: [j, i], 
         rgb: returnRGB(chunk),
