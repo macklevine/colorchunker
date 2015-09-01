@@ -23,6 +23,8 @@
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
     "get-pixels": "^3.2.2",
+    "mongodb": "^2.0.42",
+    "mongoose": "^4.1.4",
     "node": "0.0.0",
     "png-js": "^0.1.1"
   }

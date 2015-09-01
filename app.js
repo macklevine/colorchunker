@@ -13,5 +13,3 @@ app.listen(3000, function(){
 app.get('/getpixels', function(req, res){
   pixelGetter.pixelGetter(req, res);
 });
-
-//set up a route for getting the image data.

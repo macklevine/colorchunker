@@ -1,4 +1,5 @@
 var getPixels = require('get-pixels');
+var db = require('/db.js');
 
 //NOTES: req.body should have height and width of the image to analyze.
 //for now, we'll use global variables:
@@ -17,7 +18,9 @@ var pixelGetter = function(req, res){
     } 
     chunker(pixels.data, function(_storage){
       console.log(_storage + "is our storage object");
-      res.send(_storage);
+      var Map = new db.Map({
+        data: _storage,
+      })
     });
   });
 };
