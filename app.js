@@ -14,7 +14,7 @@ app.listen(3000, function(){
 });
 
 app.post('/newevent', function(req, res){
-  console.log(req.data + " is our data");
+  console.log(req.body + " is our data");
   db.saveEvent(req, res);
 });
 
