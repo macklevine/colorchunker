@@ -1,0 +1,31 @@
+<!doctype=HTML>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      var data = {
+            name: "mack",
+            tag: "#mackevent",
+            path: "../fivebyfive.png"
+          };
+      var newEvent = function(){
+        $.ajax({
+          type: "POST",
+          url: '/newevent',
+          data: JSON.stringify(data),
+          success: function(data){
+            console.log("success! sent" + data);
+          },
+          contentType: 'application/json',
+          error: function(data){
+            console.log("failed to send message");
+          }
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Create Event</h1>
+    <button onclick='newEvent()'>Click me</button>
+  </body>
+</html>
