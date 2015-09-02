@@ -37,16 +37,21 @@ var Map = mongoose.model("Map", mapSchema);
 
 var saveEvent = function(req, res){
   var newEvent = new Event({
-    _parentUser: req.body.username,
+    /* 
+    _parentUser: User.findOne({username: req.body.username})
+      .exec(function(err, user){
+        return user._id;
+      });
+    */
     name: req.body.name,
     tag: req.body.tag,
     path: req.body.path,
   })
   .save()
   .then(function(event){
+    //ultimately, push the event to its user's array of event ids, and save the user.
     pixelGetter(event.path, event, res)
   });
-  //something is going on here.
 }
 
 
@@ -72,6 +77,9 @@ var pixelGetter = function(path, event, res){
         event.map = map._id;
         map._parentEvent = event._id;
         event.save()
+          .then(function(){
+            return map.save();
+          })
           .then(function(){
             res.end();
           });
